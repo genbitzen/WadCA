@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stypesheet" type ="text/css" media="all"
+		th:href="@{/css/style.css}"/>
+		
+<title>NSIU</title>
+</head>
+<body>
+<h1>View Course Enrolment</h1>
+<table>
+<tr>
+	<th>Course Id</th>
+	<th>Course Name</th>
+	<th>Course Size</th>
+	<th>Course Credits</th>
+</tr>
+<tr th:each="courseEnrolment:${courses}">
+	<td th:text="{courseEnrolment.course_Id">ID</td>
+	<td th:text="{courseEnrolment.course_Name">ID</td>
+	<td th:text="{courseEnrolment.course_Size">ID</td>
+	<td th:text="{courseEnrolment.course_Credits">ID</td>
+</tr>
+</table>
+</body>
+</html>

@@ -20,6 +20,17 @@ public class Course {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Course(String course_Name, String course_Description, int course_Size, int course_Credits,
+			String course_Duration) {
+		super();
+		this.course_Name = course_Name;
+		this.course_Description = course_Description;
+		this.course_Size = course_Size;
+		this.course_Credits = course_Credits;
+		this.course_Duration = course_Duration;
+	}
+
 	public Course(int course_Id, String course_Name, String course_Description, int course_Size, int course_Credits,
 			String course_Duration) {
 		super();
