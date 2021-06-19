@@ -1,4 +1,4 @@
-package sg.edu.iss.Model;
+package sg.edu.iss.CAGen.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,6 @@ import javax.persistence.Id;
 public class Course {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int course_Id;
 	String course_Name;
 	String course_Description;

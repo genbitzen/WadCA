@@ -1,4 +1,4 @@
-package sg.edu.iss.Model;
+package sg.edu.iss.CAGen.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

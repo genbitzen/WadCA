@@ -12,9 +12,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import sg.edu.iss.CAGen.CaGenesisApplication;
-import sg.edu.iss.Model.Course;
-import sg.edu.iss.Repo.CourseRepository;
+import sg.edu.iss.CAGen.Model.Course;
+import sg.edu.iss.CAGen.Repo.CourseRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = CaGenesisApplication.class)
@@ -27,13 +26,9 @@ class CaGenesisApplicationTests {
 	@Autowired
 	CourseRepository crepo;
 	
-	@Test
-	@Order(1)
-	void contextLoads() {
-	}
 	
 	@Test
-	@Order(2)
+	@Order(1)
 	public void createNewCourses(){
 		Course c1 = new Course(1001,"History in Salmon Farming","A brief Introduction to Salmon farming techniques", 60, 3, "8 weeks");
 		Course c2 = new Course(1003,"Anatomy of Salmon 101","A good understanding of Salmon biology", 30, 3, "6 weeks");
