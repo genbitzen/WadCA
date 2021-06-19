@@ -1,6 +1,8 @@
 package sg.edu.iss.CAGen.Controller;
 
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +20,9 @@ public class CourseController {
 	CourseRepository crepo;
 	
 	//Getting list of Courses from 1 table to display 
-	@GetMapping("/list")
+	@GetMapping("list")
 	public String enrolmentList(Model model) {
-
+		//ArrayList<Course> clist = (ArrayList<Course>)crepo.findAll();
 		model.addAttribute("courses", crepo.findAll());
 		return "courseEnrolment";
 	}
