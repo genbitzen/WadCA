@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import sg.edu.iss.CAGen.Model.Enrolment;
+import sg.edu.iss.CAGen.Model.Student;
 
-public interface EnrolmentRepository extends JpaRepository<Enrolment, UUID>{
+public interface StudentRepository extends JpaRepository<Student, UUID> {
 
 }

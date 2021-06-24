@@ -11,16 +11,18 @@
 <h1>View Course Enrolment</h1>
 <table>
 <tr>
-	<th>Course Id</th>
 	<th>Course Name</th>
 	<th>Course Size</th>
 	<th>Course Credits</th>
+	<th>Course Duration</th>
 </tr>
-<tr th:each="course:${courses}">
-	<td th:text=${course.course_Id}>ID</td>
-	<td th:text=${course.course_Name}>ID</td>
-	<td th:text=${course.course_Size}>ID</td>
-	<td th:text=${course.course_Credits}>ID</td>
+<tr th:each="course:${allCourses}">
+	<td th:text=${course.course_name}>Default Name</td>
+	<td th:text=${course.class_size}>Default Size</td>
+	<td th:text=${course.credits}>Default Credits</td>
+	<td th:text=${course.duration}>Default Duration</td>
+	<td><a href="DetailedCourseEnrolment.html"
+		th:href="@{/courseenrolment/studentlist}"> More Details </a></td>
 </tr>
 </table>
 </body>

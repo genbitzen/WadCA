@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>What can you teach?</title>
+</head>
+<body>
+<h1>Input Details</h1>
+<form action="" th:object="${courseKnown}" th:action="@{/courseenrolment/save}" method="get">
+	<fieldset>
+		<input type="hidden" th:field="*{lecturerCanTeach_Id}"> 
+	</fieldset>
+	<fieldset>
+			Name: <input type="text" th:field="*{can_Teach}">
+			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+	</fieldset>
+	<fieldset>
+			Name: <input type="text" th:field="*{name}">
+			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+	</fieldset>
+	<fieldset>
+			Name: <input type="text" th:field="*{name}">
+			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+	</fieldset>
+</form>
+</body>
+</html>
