@@ -22,7 +22,7 @@ import sg.edu.iss.CAGen.service.LecturerService;
 import sg.edu.iss.CAGen.service.StudentService;
 
 @Controller
-@RequestMapping("courseenrolment")
+@RequestMapping("/courseenrolment")
 public class CourseEnrolmentController {
 
 	//import service layer via auto-wired
@@ -42,7 +42,7 @@ public class CourseEnrolmentController {
 	public void setCourseService(LecturerCanTeachServiceImpl ltserviceImpl) {
 		this.ltservice= ltserviceImpl;
 	}
-	@GetMapping("/add")
+	@RequestMapping(value ="/add")
 	public String addCourses(Model model) {
 		//add new course form
 		model.addAttribute("addcourse", new LecturerCanTeach());
@@ -50,32 +50,37 @@ public class CourseEnrolmentController {
 		ArrayList<String> clist = cservice.findAllCourseName();
 		ArrayList<String> llist = lservice.findAllLecturerNames();
 		model.addAttribute("cnames", clist);
-		model.addAttribute("llist", llist);
+		model.addAttribute("lnames", llist);
 		//direct to html
-		return "addcourse";
+		return "addcourseform";
 	}
 	
-	@GetMapping("/save")
-	public String saveCourseTaught (@ModelAttribute("addcourse") @Valid LecturerCanTeach coursestaught,BindingResult bindingResult, Model model) {
+	@RequestMapping(value = "/save")
+	public String saveCourseTaught (@ModelAttribute("addcourse") @Valid LecturerCanTeach addcourse,BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			return "courseform";
+			return "addcourseform";
 		}
-		Lecturer lecturer = lservice.findLecturerByFirstName(coursestaught.getLecturer().getFirstName());
+		//Lecturer Id
+		Lecturer lecturer = lservice.findLecturerByFirstName(addcourse.getLecturer().getFirstName());
 		lecturer = lservice.findLecturerById(lecturer.getLecturer_Id());
-		coursestaught.setLecturer(lecturer);
-		Course course = cservice.findCourseByName(coursestaught.getCourse().getCourse_name());
+		addcourse.setLecturer(lecturer);
+		//Course Id
+		Course course = cservice.findCourseByName(addcourse.getCourse().getCourse_name());
 		course = cservice.findCourseById(course.getCourse_Id());
-		coursestaught.setCourse(course);
-		
-		return "forward:/courseenrolment/list";
+		addcourse.setCourse(course);
+		//Find course name
+		Course coursename = cservice.findCourseByName(addcourse.getCourse().getCourse_name());
+		addcourse.setCan_Teach(coursename.toString());
+		ltservice.addCousesTaught(addcourse);
+		return "forward:/courseenrolment/add";
 	}
-	@GetMapping("/list")
+	@RequestMapping(value = "/list")
 	public String listCourseKnown(Model model) {
 		model.addAttribute("allCourses", cservice.listAllCourses());
 		return "courseEnrolment";
 	}
 	
-	@GetMapping("/studentlist")
+	@RequestMapping(value = "/studentlist")
 	public String studentsList(Model model) {
 		model.addAttribute("students", stservice.listAllStudents());
 		return "DetailedCourseEnrolment";

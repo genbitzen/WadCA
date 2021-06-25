@@ -9,7 +9,7 @@
 <body>
 
 	<h1>Add Courses</h1>
-	<form action="#" th:object="${addcourse}" th:action="@{courseenrolment/save}"method="post">
+	<form action="#" th:object="${addcourse}" th:action="@{/courseenrolment/save}"method="post">
 		
 			<fieldset>
 					<input type="hidden" th:field="*{lecturerCanTeach_Id}">
@@ -28,6 +28,8 @@
 			</fieldset>
 			<fieldset>
 					<input type="submit" value ="Save"/>
+								&nbsp; &nbsp; 	
+					<input type="reset" value="Reset"/>
 			</fieldset>
 	</form>
 </body>

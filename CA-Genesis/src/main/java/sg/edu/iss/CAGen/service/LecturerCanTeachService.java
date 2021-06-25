@@ -9,4 +9,5 @@ public interface LecturerCanTeachService {
 	//List all implementations
 	
 	public ArrayList<LecturerCanTeach> listAllCourseTaught();
+	public void addCousesTaught(LecturerCanTeach lct);
 }

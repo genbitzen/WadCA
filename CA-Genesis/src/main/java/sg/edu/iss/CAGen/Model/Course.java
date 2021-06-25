@@ -104,9 +104,8 @@ public class Course {
 	}
 	@Override
 	public String toString() {
-		return "Course [course_Id=" + course_Id + ", class_size=" + class_size + ", course_name=" + course_name
-				+ ", credits=" + credits + ", description=" + description + ", duration=" + duration
-				+ ", lecturerCanTeaches=" + lecturerCanTeaches + ", enrolments=" + enrolments + "]";
+		return getCourse_name();
 	}
+	
 	
 }

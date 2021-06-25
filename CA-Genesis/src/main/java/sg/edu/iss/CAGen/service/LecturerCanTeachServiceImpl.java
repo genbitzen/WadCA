@@ -22,4 +22,10 @@ public class LecturerCanTeachServiceImpl implements LecturerCanTeachService{
 	public ArrayList<LecturerCanTeach> listAllCourseTaught(){
 		return (ArrayList<LecturerCanTeach>) ltrepo.findAll();
 	}
+	
+	//add courses taught by lecturer
+	@Transactional
+	public void addCousesTaught(LecturerCanTeach lct) {
+		ltrepo.save(lct);
+	}
 }

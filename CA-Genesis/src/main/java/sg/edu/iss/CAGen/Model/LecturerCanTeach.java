@@ -56,8 +56,7 @@ public class LecturerCanTeach {
 	}
 	@Override
 	public String toString() {
-		return "LecturerCanTeach [lecturerCanTeach_Id=" + lecturerCanTeach_Id + ", can_Teach=" + can_Teach
-				+ ", lecturer=" + lecturer + ", course=" + course + "]";
+		return "getCan_Teach()";
 	}
 	
 	
