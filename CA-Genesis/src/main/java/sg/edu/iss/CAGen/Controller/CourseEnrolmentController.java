@@ -1,6 +1,7 @@
 package sg.edu.iss.CAGen.Controller;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -8,14 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import sg.edu.iss.CAGen.Model.Course;
 import sg.edu.iss.CAGen.Model.Lecturer;
 import sg.edu.iss.CAGen.Model.LecturerCanTeach;
 import sg.edu.iss.CAGen.service.CourseService;
+import sg.edu.iss.CAGen.service.EnrolmentService;
 import sg.edu.iss.CAGen.service.LecturerCanTeachService;
 import sg.edu.iss.CAGen.service.LecturerCanTeachServiceImpl;
 import sg.edu.iss.CAGen.service.LecturerService;
@@ -37,6 +39,9 @@ public class CourseEnrolmentController {
 	
 	@Autowired
 	StudentService stservice;
+	
+	@Autowired
+	EnrolmentService eservice;
 
 	@Autowired
 	public void setCourseService(LecturerCanTeachServiceImpl ltserviceImpl) {
@@ -80,9 +85,10 @@ public class CourseEnrolmentController {
 		return "courseEnrolment";
 	}
 	
-	@RequestMapping(value = "/studentlist")
-	public String studentsList(Model model) {
-		model.addAttribute("students", stservice.listAllStudents());
+	@RequestMapping(value = "/studentlist/{courseId}")
+	public String studentsList(@PathVariable("courseId") @Valid UUID course_Id, Model model) {
+		model.addAttribute("coursenames", cservice.findCourseById(course_Id));
+		model.addAttribute("students", eservice.listEnrolmentByCourseId(course_Id));
 		return "DetailedCourseEnrolment";
 	}
 	
