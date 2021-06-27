@@ -1,6 +1,7 @@
 package sg.edu.iss.CAGen.Model;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+
 
 @Entity
 public class Course {
@@ -27,7 +29,7 @@ public class Course {
 	private String description;
 	private String duration;
 	@OneToMany(mappedBy="course")
-	private Collection<LecturerCanTeach> lecturerCanTeaches;
+	private List<LecturerCanTeach> lecturerCanTeaches;
 	@OneToMany(mappedBy="course")
 	private Collection<Enrolment> enrolments;
 	public Course() {
@@ -35,7 +37,7 @@ public class Course {
 		// TODO Auto-generated constructor stub
 	}
 	public Course(int class_size, String course_name, int credits, String description, String duration,
-			Collection<LecturerCanTeach> lecturerCanTeaches, Collection<Enrolment> enrolments) {
+			List<LecturerCanTeach> lecturerCanTeaches, Collection<Enrolment> enrolments) {
 		super();
 		this.class_size = class_size;
 		this.course_name = course_name;
@@ -93,7 +95,7 @@ public class Course {
 	public Collection<LecturerCanTeach> getLecturerCanTeaches() {
 		return lecturerCanTeaches;
 	}
-	public void setLecturerCanTeaches(Collection<LecturerCanTeach> lecturerCanTeaches) {
+	public void setLecturerCanTeaches(List<LecturerCanTeach> lecturerCanTeaches) {
 		this.lecturerCanTeaches = lecturerCanTeaches;
 	}
 	public Collection<Enrolment> getEnrolments() {

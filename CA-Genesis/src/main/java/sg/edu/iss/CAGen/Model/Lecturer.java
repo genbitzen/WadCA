@@ -2,9 +2,9 @@ package sg.edu.iss.CAGen.Model;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -32,7 +32,7 @@ public class Lecturer {
 	private String middleName;
 	private String lastName;
 	@OneToMany(mappedBy="lecturer")
-	private Collection<LecturerCanTeach> lecturerCanTeaches;
+	private List<LecturerCanTeach> lecturerCanTeaches;
 	public Lecturer() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -48,7 +48,7 @@ public class Lecturer {
 	}
 
 	public Lecturer(LocalDate doj, String email, String firstName, String middleName, String lastName,
-			Collection<LecturerCanTeach> lecturerCanTeaches) {
+			List<LecturerCanTeach> lecturerCanTeaches) {
 		super();
 		this.doj = doj;
 		this.email = email;
@@ -96,7 +96,7 @@ public class Lecturer {
 	public Collection<LecturerCanTeach> getLecturerCanTeaches() {
 		return lecturerCanTeaches;
 	}
-	public void setLecturerCanTeaches(Collection<LecturerCanTeach> lecturerCanTeaches) {
+	public void setLecturerCanTeaches(List<LecturerCanTeach> lecturerCanTeaches) {
 		this.lecturerCanTeaches = lecturerCanTeaches;
 	}
 	

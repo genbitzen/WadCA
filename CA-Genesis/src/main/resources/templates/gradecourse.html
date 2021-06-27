@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Grade A Course</title>
 </head>
 <body>
+			<fieldset>
+					Courses <select th:field="*{courses.course_name}">
+							<option th:each="cname:${cnames}" th:value="${cname}"
+									th:text="${cname}"></option>
+					</select>
+			</fieldset>
 
 </body>
 </html>

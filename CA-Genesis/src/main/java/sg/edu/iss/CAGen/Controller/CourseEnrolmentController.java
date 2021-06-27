@@ -81,9 +81,14 @@ public class CourseEnrolmentController {
 	}
 	@RequestMapping(value = "/list")
 	public String listCourseKnown(Model model) {
-		model.addAttribute("allCourses", cservice.listAllCourses());
+		/* model.addAttribute("allCourses", cservice.listAllCourses()); */
+		//First find lecturerId from lecturer email 
+		UUID lecturerId = lservice.findLecturerIdbyEmail("XXX@gmail.com");
+		//Second find courses based on lecturerId
+		model.addAttribute("courses", ltservice.findCourseNamebyId(lecturerId));
 		return "courseEnrolment";
 	}
+	
 	
 	@RequestMapping(value = "/studentlist/{courseId}")
 	public String studentsList(@PathVariable("courseId") @Valid UUID course_Id, Model model) {

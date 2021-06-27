@@ -13,4 +13,5 @@ public interface LecturerService {
 	public ArrayList<Lecturer> listAllLecturers();
 	public Lecturer findLecturerById(UUID id);
 	public Lecturer findLecturerByFirstName(String firstName);
+	public UUID findLecturerIdbyEmail(String email);
 }

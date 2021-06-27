@@ -33,6 +33,11 @@ public class LecturerServiceImpl implements LecturerService {
 	public Lecturer findLecturerById(UUID id) {
 		return lrepo.findById(id).get();
 	}
+	//find lecturerId by email
+	@Transactional
+	public UUID findLecturerIdbyEmail(String email) {
+		return lrepo.findLecturerIdbyEmail(email);
+	}
 	//get lecturer firstName
 	@Transactional
 	public Lecturer findLecturerByFirstName(String firstName) {

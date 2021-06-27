@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+
 @Entity
 public class LecturerCanTeach {
 
@@ -15,11 +16,11 @@ public class LecturerCanTeach {
 	private int lecturerCanTeach_Id;
 	private String can_Teach;
 	@ManyToOne
-	@JoinColumn(name="lecturer_Id", nullable = false)
-	private Lecturer lecturer; 
-	@ManyToOne
-	@JoinColumn(name="course_Id", nullable= false)
+	@JoinColumn(name = "course_Id", referencedColumnName = "course_Id")
 	private Course course;
+	@ManyToOne
+	@JoinColumn(name = "lecturer_Id", referencedColumnName = "lecturer_Id")
+	private Lecturer lecturer;
 	public LecturerCanTeach() {
 		super();
 		// TODO Auto-generated constructor stub

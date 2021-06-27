@@ -2,29 +2,60 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stypesheet" type ="text/css" media="all"
-		th:href="@{/css/style.css}"/>
-		
+<link rel="stypesheet" type="text/css" media="all"
+	th:href="@{/css/style.css}" />
+
 <title>NSIU</title>
 </head>
 <body>
-<h1>View Course Enrolment</h1>
-<table>
-<tr>
-	<th>Course Name</th>
-	<th>Course Size</th>
-	<th>Course Credits</th>
-	<th>Course Duration</th>
-</tr>
-<!-- Try to link tagged features into the next table -->
-<tr th:each="course:${allCourses}">
-	<td th:text=${course.course_name}>Default Name</td>
-	<td th:text=${course.class_size}>Default Size</td>
-	<td th:text=${course.credits}>Default Credits</td>
-	<td th:text=${course.duration}>Default Duration</td>
-	<td><a href="DetailedCourseEnrolment.html"
-		th:href="@{/courseenrolment/studentlist/{course_id}(course_id=${course.course_Id})}"> More Details </a></td>
-</tr>
-</table>
+	<h1>View Course Enrolment</h1>
+	<table>
+		<tr>
+			<th>Course Name</th>
+			<th>Course Size</th>
+			<th>Course Credits</th>
+			<th>Course Duration</th>
+			<th>Add/Edit Credits (Test)</th>
+			<th>More Details</th>
+		</tr>
+		<!-- Try to link tagged features into the next table -->
+		<tr th:each="course:${courses}">
+			<td th:text=${course.course_name}>Default Name</td>
+			<td th:text=${course.class_size}>Default Size</td>
+			<td th:text=${course.credits}>Default Credits</td>
+			<td th:text=${course.duration}>Default Duration</td>
+			<td>
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-success btn-sm mt-2" data-toggle="modal"
+					th:attr = "data-target='#exampleModalCenter' + *{course.course_Id}">Edit Credits</button> <!-- Modal -->
+				<div class="modal fade" th:id="*{'exampleModalCenter' + {course.course_Id}}" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalCenterTitle"
+					aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLongTitle">Modal
+									title</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">...</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary">Save
+									changes</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</td>
+			<td><a href="DetailedCourseEnrolment.html"
+				th:href="@{/courseenrolment/studentlist/{course_id}(course_id=${course.course_Id})}">
+					Click for more info </a></td>
+		</tr>
+	</table>
 </body>
 </html>
